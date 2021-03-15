@@ -1,6 +1,6 @@
 ---
 knit: "bookdown::render_book"
-title: "[ENAR 2021 Workshop] Targeted Learning in the `tlverse`"
+title: "[SER 2021 Workshop] Targeted Learning in the `tlverse`"
 subtitle: "Causal Inference Meets Machine Learning"
 author: "Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana
   Malenica, Rachael Phillips"
@@ -16,21 +16,21 @@ colorlinks: yes
 lot: yes
 lof: yes
 always_allow_html: yes
-url: 'https\://tlverse.org/enar2021-workshop/'
-github-repo: tlverse/enar2021-workshop
+url: 'https\://tlverse.org/ser2021-workshop/'
+github-repo: tlverse/ser2021-workshop
 graphics: yes
 description: "Open source, reproducible teaching materials accompanying a
   workshop on Targeted Learning with the [`tlverse` software
-  ecosystem](https://github.com/tlverse), given at the [ENAR 2021 Spring
-  Meeting](https://www.enar.org/meetings/spring2021/) on 14 March 2021."
+  ecosystem](https://github.com/tlverse), given at the [SER 2021
+  Meeting]() on Monday, 07 June 2021."
 ---
 
 # Welcome! {-}
 
-This open source, reproducible vignette is for a full-day workshop on the
+This open source, reproducible vignette is for a half-day workshop on the
 Targeted Learning framework for statistical and causal inference with machine
-learning, given at the [ENAR 2021 Spring
-Meeting](https://www.enar.org/meetings/spring2021/) on Sunday, 14 March 2021.
+learning, given at the [SER 2021
+Meeting]() on Monday, 07 June 2021.
 Beyond introducing Targeted Learning, the workshop focuses on applying the
 methodology in practice using the [`tlverse` software
 ecosystem](https://github.com/tlverse).  These materials are based on a working
@@ -52,7 +52,7 @@ useful reference to accompany these workshop materials.
 
 * __Software installation__: Please install the relevant software before the
   workshop using the [installation
-  script](https://github.com/tlverse/enar2021-workshop/blob/master/install.R).
+  script](https://github.com/tlverse/ser2021-workshop/blob/master/install.R).
 
 * You will probably exceed the GitHub API rate limit during this installation,
   which will throw an error. This issue and the solution are addressed
@@ -60,11 +60,11 @@ useful reference to accompany these workshop materials.
 
 * __Code__: `R` script files for each section of the workshop are available via
   the GitHub repository for the workshop at
-  https://github.com/tlverse/enar2021-workshop/tree/master/R_code
+  https://github.com/tlverse/ser2021-workshop/tree/master/R_code
 
 ## About this workshop {-}
 
-This full-day workshop will provide a comprehensive introduction to the field of
+This half-day workshop will provide a comprehensive introduction to the field of
 _Targeted Learning_ and the corresponding [`tlverse` software
 ecosystem](https://github.com/tlverse). In particular, we will focus on targeted
 minimum loss estimators of causal effects, including those of static dynamic,
@@ -83,31 +83,28 @@ necessary.  Familiarity with the `R` programming language will be essential.
 
 ## Outline {-}
 
-* 08:00-09:00A: The Roadmap of Targeted Learning and [Why We Need A Statistical
+* _Before_: The Roadmap of Targeted Learning and [Why We Need A Statistical
   Revolution](https://senseaboutscienceusa.org/super-learning-and-the-revolution-in-knowledge/)
   with an *[introductory video lecture by Mark van der Laan and Alan
   Hubbard](https://www.dropbox.com/s/7b6ru2ahycqq80v/ENAR2021-lecture.mp4?dl=0)*
-* 09:00-09:30A: Morning Discussion
-* 09:30-10:00A: Morning Coffee Break + Introductions
-* 10:00-10:30A: [Introduction to the `tlverse` Software
+* 09:00-09:30A: [Introduction to the `tlverse` Software
   Ecosystem](https://tlverse.org) and the [WASH Benefits
   data](http://www.washbenefits.net/)
-* 10:30-11:30A: Super learning with the [`sl3` `R`
+* 09:30-10:15A: Super learning with the [`sl3` `R`
   package](https://github.com/tlverse/sl3)
-* 11:30A-12:30P: Programming exercises with `sl3`
-* 12:30-01:30P: Lunch Break with optional Q&A
-* 01:30-02:30P: Targeted Learning for causal inference with the [`tmle3` `R`
+* 10:15A-11:00: Programming exercises with `sl3`
+* 11:00-11:15A: Break, Discussion, Q&A
+* 11:15-12:00P: Targeted Learning for causal inference with the [`tmle3` `R`
   package](https://github.com/tlverse/tmle3)
-* 02:30-03:30P: Programming exercises with `tmle3`
-* 03:30-03:45P: Afternoon Coffee Break
-* 03:45-05:00P: Participants' choice (by class vote), from among
+* 12:00-12:30P: Programming exercises with `tmle3`
+* 12:30-01:00P: Participants' choice (by class vote), from among
   * Optimal treatment regimes with the [`tmle3mopttx` `R`
     package](https://github.com/tlverse/tmle3mopttx)
   * Stochastic treatment regimes with the [`tmle3shift` `R`
     package](https://github.com/tlverse/tmle3shift)
   * Concluding review and discussion
 
-__NOTE: All listings are in Eastern Time.__
+__NOTE: All listings are in Pacific Time.__
 
 ## About the instructors {-}
 
