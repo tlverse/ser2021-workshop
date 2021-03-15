@@ -1,0 +1,54 @@
+Package: ser2021workshop
+Title: Targeted Learning Workshop at the SER 2021 Meeting
+Version: 1.0.0
+Depends: R (>= 4.0.0)
+Imports:
+  bookdown,
+  bslib,
+  downlit,
+  rmarkdown,
+  ggplot2,
+  tibble,
+  tidyr,
+  dplyr,
+  readr,
+  knitr,
+  stringr,
+  tidyverse,
+  kableExtra,
+  devtools,
+  data.table,
+  here,
+  mvtnorm,
+  skimr,
+  delayed,
+  origami (>= 1.0.3),
+  sl3 (>= 1.4.3),
+  tmle3 (>= 0.2.0),
+  tmle3mopttx,
+  tmle3shift (>= 0.2.0)
+Suggests:
+  nnls,
+  Rsolnp,
+  xgboost,
+  ranger,
+  glmnet,
+  arm,
+  gam,
+  speedglm,
+  polspline,
+  randomForest,
+  SuperLearner,
+  hal9001,
+  haldensify
+Remotes:
+  rstudio/bslib,
+  rstudio/bookdown,
+  tlverse/sl3@devel,
+  tlverse/tmle3@master,
+  tlverse/tmle3mopttx@5ba5f65,
+  tlverse/tmle3shift@master
+URL:
+  https://github.com/tlverse/ser2021-workshop,
+  https://tlverse.org/ser2021-workshop
+BugReports: https://github.com/tlverse/ser2021-workshop/issues
