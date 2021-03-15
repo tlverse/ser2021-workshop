@@ -16,4 +16,4 @@ The workshop materials are automatically built and deployed using
 RStudio, with libraries pinned to a specific snapshot on
 [MRAN](https://mran.microsoft.com/documents/rro/reproducibility). An RStudio
 session, pre-loaded with all the materials, is available via the "launch binder"
-button on this page.
+button at the top of this page.
