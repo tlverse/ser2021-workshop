@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 7 A Primer on the R6 Class System | [SER 2021 Workshop] Targeted Learning in the tlverse</title>
+<meta name="author" content="Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.5.1/jquery-3.5.1.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4.9002/tabs.js"></script><script src="libs/bs3compat-0.2.4.9002/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/vis-4.20.1/vis.css" rel="stylesheet">
+<script src="libs/vis-4.20.1/vis.min.js"></script><script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Causal Inference Meets Machine Learning">[SER 2021 Workshop] Targeted Learning in the <code>tlverse</code></a>:
+        <small class="text-muted">Causal Inference Meets Machine Learning</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Welcome!</a></li>
+<li><a class="" href="motivation.html">Motivation</a></li>
+<li><a class="" href="tlverse.html"><span class="header-section-number">1</span> Welcome to the tlverse</a></li>
+<li><a class="" href="intro.html"><span class="header-section-number">2</span> The Roadmap for Targeted Learning</a></li>
+<li><a class="" href="sl3.html"><span class="header-section-number">3</span> Super (Machine) Learning</a></li>
+<li><a class="" href="tmle3.html"><span class="header-section-number">4</span> The TMLE Framework</a></li>
+<li><a class="" href="optimal-individualized-treatment-regimes-optional.html"><span class="header-section-number">5</span> Optimal Individualized Treatment Regimes (optional)</a></li>
+<li><a class="" href="stochastic-treatment-regimes-optional.html"><span class="header-section-number">6</span> Stochastic Treatment Regimes (optional)</a></li>
+<li><a class="active" href="r6.html"><span class="header-section-number">7</span> A Primer on the R6 Class System</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/tlverse/ser2021-workshop">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="r6" class="section level1">
+<h1>
+<span class="header-section-number">7</span> A Primer on the <code>R6</code> Class System<a class="anchor" aria-label="anchor" href="#r6"><i class="fas fa-link"></i></a>
+</h1>
+<p>A central goal of the Targeted Learning statistical paradigm is to estimate
+scientifically relevant parameters in realistic (usually nonparametric) models.</p>
+<p>The <code>tlverse</code> is designed using basic OOP principles and the <code>R6</code> OOP framework.
+While we’ve tried to make it easy to use the <code>tlverse</code> packages without worrying
+much about OOP, it is helpful to have some intuition about how the <code>tlverse</code> is
+structured. Here, we briefly outline some key concepts from OOP. Readers
+familiar with OOP basics are invited to skip this section.</p>
+<div id="classes-fields-and-methods" class="section level2">
+<h2>
+<span class="header-section-number">7.1</span> Classes, Fields, and Methods<a class="anchor" aria-label="anchor" href="#classes-fields-and-methods"><i class="fas fa-link"></i></a>
+</h2>
+<p>The key concept of OOP is that of an object, a collection of data and functions
+that corresponds to some conceptual unit. Objects have two main types of
+elements:</p>
+<ol style="list-style-type: decimal">
+<li>
+<em>fields</em>, which can be thought of as nouns, are information about an object,
+and</li>
+<li>
+<em>methods</em>, which can be thought of as verbs, are actions an object can
+perform.</li>
+</ol>
+<p>Objects are members of classes, which define what those specific fields and
+methods are. Classes can inherit elements from other classes (sometimes called
+base classes) – accordingly, classes that are similar, but not exactly the
+same, can share some parts of their definitions.</p>
+<p>Many different implementations of OOP exist, with variations in how these
+concepts are implemented and used. R has several different implementations,
+including <code>S3</code>, <code>S4</code>, reference classes, and <code>R6</code>. The <code>tlverse</code> uses the <code>R6</code>
+implementation. In <code>R6</code>, methods and fields of a class object are accessed using
+the <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> operator. For a more thorough introduction to <code>R6</code>, see <a href="https://adv-r.hadley.nz/r6.html" class="uri">https://adv-r.hadley.nz/r6.html</a>, from Hadley Wickham’s <em>Advanced
+R</em> <span class="citation">(Wickham <a href="references.html#ref-wickham2014advanced" role="doc-biblioref">2014</a>)</span>.</p>
+</div>
+<div id="object-oriented-programming-python-and-r" class="section level2">
+<h2>
+<span class="header-section-number">7.2</span> Object Oriented Programming: <code>Python</code> and <code>R</code><a class="anchor" aria-label="anchor" href="#object-oriented-programming-python-and-r"><i class="fas fa-link"></i></a>
+</h2>
+<p>OO concepts (classes with inherentence) were baked into Python from the first
+published version (version 0.9 in 1991). In contrast, <code>R</code> gets its OO “approach”
+from its predecessor, <code>S</code>, first released in 1976. For the first 15 years, <code>S</code>
+had no support for classes, then, suddenly, <code>S</code> got two OO frameworks bolted on
+in rapid succession: informal classes with <code>S3</code> in 1991, and formal classes with
+<code>S4</code> in 1998. This process continues, with new OO frameworks being periodically
+released, to try to improve the lackluster OO support in <code>R</code>, with reference
+classes (<code>R5</code>, 2010) and <code>R6</code> (2014). Of these, <code>R6</code> behaves most like Python
+classes (and also most like OOP focused languages like C++ and Java), including
+having method definitions be part of class definitions, and allowing objects to
+be modified by reference.</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="stochastic-treatment-regimes-optional.html"><span class="header-section-number">6</span> Stochastic Treatment Regimes (optional)</a></div>
+<div class="next"><a href="references.html">References</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#r6"><span class="header-section-number">7</span> A Primer on the R6 Class System</a></li>
+<li><a class="nav-link" href="#classes-fields-and-methods"><span class="header-section-number">7.1</span> Classes, Fields, and Methods</a></li>
+<li><a class="nav-link" href="#object-oriented-programming-python-and-r"><span class="header-section-number">7.2</span> Object Oriented Programming: Python and R</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/tlverse/ser2021-workshop/blob/master/99-primer_R6.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/tlverse/ser2021-workshop/edit/master/99-primer_R6.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>[SER 2021 Workshop] Targeted Learning in the <code>tlverse</code></strong>: Causal Inference Meets Machine Learning" was written by Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips. It was last built on updated: March 15, 2021.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+</html>
