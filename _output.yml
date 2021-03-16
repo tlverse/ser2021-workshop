@@ -1,6 +1,6 @@
 bookdown::bs4_book:
   theme:
-    primary: "#637238"
+    primary: "#0098db"
   repo: https://github.com/tlverse/ser2021-workshop
 
 bookdown::gitbook:
