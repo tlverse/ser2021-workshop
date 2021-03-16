@@ -4,7 +4,7 @@ title: "[SER 2021 Workshop] Targeted Learning in the `tlverse`"
 subtitle: "Causal Inference Meets Machine Learning"
 author: "Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana
   Malenica, Rachael Phillips"
-date: "updated: March 15, 2021"
+date: "updated: March 16, 2021"
 documentclass: book
 site: bookdown::bookdown_site
 bibliography: [book.bib, packages.bib]
@@ -64,39 +64,44 @@ useful reference to accompany these workshop materials.
 
 ## About this workshop {-}
 
-This half-day workshop will provide a comprehensive introduction to the field of
-_Targeted Learning_ and the corresponding [`tlverse` software
-ecosystem](https://github.com/tlverse). In particular, we will focus on targeted
-minimum loss estimators of causal effects, including those of static dynamic,
-optimal dynamic, and stochastic interventions. These multiply robust, efficient
-plug-in estimators use state-of-the-art, ensemble machine learning tools to
-flexibly adjust for confounding while yielding valid statistical inference.
+This workshop will provide a comprehensive introduction to the field of
+_Targeted Learning_ for causal inference, and the corresponding [`tlverse` software
+ecosystem](https://github.com/tlverse). Emphasis will be placed on targeted
+minimum loss-based estimators of the causal effects of single timepoint
+interventions, including extensions for missing covariate and outcome data.
+These multiply robust, efficient plug-in estimators use state-of-the-art,
+ensemble machine learning tools to flexibly adjust for confounding while
+yielding valid statistical inference. In particular, we will discuss targeted
+estimators of the causal effects of static and dynamic interventions; time
+permitting, additional topics to be discussed will include estimation of the
+causal effects of optimal dynamic and stochastic interventions.
 
 In addition to discussion, this workshop will incorporate both interactive
 activities and hands-on, guided `R` programming exercises, to allow participants
 the opportunity to familiarize themselves with methodology and tools that will
 translate to real-world data analysis. It is highly recommended for participants
 to have an understanding of basic statistical concepts such as confounding,
-probability distributions, confidence intervals, hypothesis tests, and
+probability distributions, confidence intervals, hypothesis testing, and
 regression. Advanced knowledge of mathematical statistics is useful but not
-necessary.  Familiarity with the `R` programming language will be essential.
+necessary. Familiarity with the `R` programming language will be essential.
 
 ## Outline {-}
 
-* _Before_: The Roadmap of Targeted Learning and [Why We Need A Statistical
+* _Warm-up_: The Roadmap of Targeted Learning and [Why We Need A Statistical
   Revolution](https://senseaboutscienceusa.org/super-learning-and-the-revolution-in-knowledge/)
   with an *[introductory video lecture by Mark van der Laan and Alan
   Hubbard](https://www.dropbox.com/s/7b6ru2ahycqq80v/ENAR2021-lecture.mp4?dl=0)*
-* 09:00-09:30A: [Introduction to the `tlverse` Software
+  (__Please watch this hour-long lecture before the workshop.__)
+* 09:00-09:20A: [Introduction to the `tlverse` Software
   Ecosystem](https://tlverse.org) and the [WASH Benefits
   data](http://www.washbenefits.net/)
-* 09:30-10:15A: Super learning with the [`sl3` `R`
+* 09:20-10:00A: Super learning with the [`sl3` `R`
   package](https://github.com/tlverse/sl3)
-* 10:15A-11:00: Programming exercises with `sl3`
-* 11:00-11:15A: Break, Discussion, Q&A
-* 11:15-12:00P: Targeted Learning for causal inference with the [`tmle3` `R`
+* 10:00-10:45A: Programming exercises with `sl3`
+* 10:45-11:00A: Break, Discussion, Q&A
+* 11:00-11:45A: Targeted Learning for causal inference with the [`tmle3` `R`
   package](https://github.com/tlverse/tmle3)
-* 12:00-12:30P: Programming exercises with `tmle3`
+* 11:45A-12:30P: Programming exercises with `tmle3`
 * 12:30-01:00P: Participants' choice (by class vote), from among
   * Optimal treatment regimes with the [`tmle3mopttx` `R`
     package](https://github.com/tlverse/tmle3mopttx)
