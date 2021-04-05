@@ -5,7 +5,7 @@ _Ivana Malenica_
 Based on the [`tmle3mopttx` `R` package](https://github.com/tlverse/tmle3mopttx)
 by _Ivana Malenica, Jeremy Coyle, and Mark van der Laan_.
 
-Updated: 2021-03-16
+Updated: 2021-04-05
 
 ## Learning Objectives
 By the end of this lesson you will be able to:
@@ -480,14 +480,14 @@ sl3_list_learners(c("categorical"))
 #>  [3] "Lrnr_cv_selector"          "Lrnr_glmnet"              
 #>  [5] "Lrnr_grf"                  "Lrnr_gru_keras"           
 #>  [7] "Lrnr_h2o_glm"              "Lrnr_h2o_grid"            
-#>  [9] "Lrnr_independent_binomial" "Lrnr_lstm_keras"          
-#> [11] "Lrnr_mean"                 "Lrnr_multivariate"        
-#> [13] "Lrnr_nnet"                 "Lrnr_optim"               
-#> [15] "Lrnr_polspline"            "Lrnr_pooled_hazards"      
-#> [17] "Lrnr_randomForest"         "Lrnr_ranger"              
-#> [19] "Lrnr_rpart"                "Lrnr_screener_correlation"
-#> [21] "Lrnr_solnp"                "Lrnr_svm"                 
-#> [23] "Lrnr_xgboost"
+#>  [9] "Lrnr_independent_binomial" "Lrnr_lightgbm"            
+#> [11] "Lrnr_lstm_keras"           "Lrnr_mean"                
+#> [13] "Lrnr_multivariate"         "Lrnr_nnet"                
+#> [15] "Lrnr_optim"                "Lrnr_polspline"           
+#> [17] "Lrnr_pooled_hazards"       "Lrnr_randomForest"        
+#> [19] "Lrnr_ranger"               "Lrnr_rpart"               
+#> [21] "Lrnr_screener_correlation" "Lrnr_solnp"               
+#> [23] "Lrnr_svm"                  "Lrnr_xgboost"
 ```
 
 

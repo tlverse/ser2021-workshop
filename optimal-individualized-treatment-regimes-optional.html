@@ -58,7 +58,7 @@
 <p><em>Ivana Malenica</em></p>
 <p>Based on the <a href="https://github.com/tlverse/tmle3mopttx"><code>tmle3mopttx</code> <code>R</code> package</a>
 by <em>Ivana Malenica, Jeremy Coyle, and Mark van der Laan</em>.</p>
-<p>Updated: 2021-03-16</p>
+<p>Updated: 2021-04-05</p>
 <div id="learning-objectives-3" class="section level2">
 <h2>
 <span class="header-section-number">5.1</span> Learning Objectives<a class="anchor" aria-label="anchor" href="#learning-objectives-3"><i class="fas fa-link"></i></a>
@@ -507,14 +507,14 @@ be used to estimate <span class="math inline">\(g_0(A|W)\)</span> in <code>sl3</
 <span class="co">#&gt;  [3] "Lrnr_cv_selector"          "Lrnr_glmnet"              </span>
 <span class="co">#&gt;  [5] "Lrnr_grf"                  "Lrnr_gru_keras"           </span>
 <span class="co">#&gt;  [7] "Lrnr_h2o_glm"              "Lrnr_h2o_grid"            </span>
-<span class="co">#&gt;  [9] "Lrnr_independent_binomial" "Lrnr_lstm_keras"          </span>
-<span class="co">#&gt; [11] "Lrnr_mean"                 "Lrnr_multivariate"        </span>
-<span class="co">#&gt; [13] "Lrnr_nnet"                 "Lrnr_optim"               </span>
-<span class="co">#&gt; [15] "Lrnr_polspline"            "Lrnr_pooled_hazards"      </span>
-<span class="co">#&gt; [17] "Lrnr_randomForest"         "Lrnr_ranger"              </span>
-<span class="co">#&gt; [19] "Lrnr_rpart"                "Lrnr_screener_correlation"</span>
-<span class="co">#&gt; [21] "Lrnr_solnp"                "Lrnr_svm"                 </span>
-<span class="co">#&gt; [23] "Lrnr_xgboost"</span></code></pre></div>
+<span class="co">#&gt;  [9] "Lrnr_independent_binomial" "Lrnr_lightgbm"            </span>
+<span class="co">#&gt; [11] "Lrnr_lstm_keras"           "Lrnr_mean"                </span>
+<span class="co">#&gt; [13] "Lrnr_multivariate"         "Lrnr_nnet"                </span>
+<span class="co">#&gt; [15] "Lrnr_optim"                "Lrnr_polspline"           </span>
+<span class="co">#&gt; [17] "Lrnr_pooled_hazards"       "Lrnr_randomForest"        </span>
+<span class="co">#&gt; [19] "Lrnr_ranger"               "Lrnr_rpart"               </span>
+<span class="co">#&gt; [21] "Lrnr_screener_correlation" "Lrnr_solnp"               </span>
+<span class="co">#&gt; [23] "Lrnr_svm"                  "Lrnr_xgboost"</span></code></pre></div>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># specify outcome and treatment regressions and create learner list</span>
 <span class="va">learner_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>Y <span class="op">=</span> <span class="va">Q_learner</span>, A <span class="op">=</span> <span class="va">g_learner</span>, B <span class="op">=</span> <span class="va">b_learner</span><span class="op">)</span></code></pre></div>
@@ -934,7 +934,7 @@ and the corresponding value of the realistic ITR:</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>[SER 2021 Workshop] Targeted Learning in the <code>tlverse</code></strong>: Causal Inference Meets Machine Learning" was written by Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips. It was last built on updated: March 16, 2021.</p>
+    <p>"<strong>[SER 2021 Workshop] Targeted Learning in the <code>tlverse</code></strong>: Causal Inference Meets Machine Learning" was written by Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips. It was last built on updated: April 05, 2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
