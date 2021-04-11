@@ -4,7 +4,7 @@ title: "[SER 2021 Workshop] Targeted Learning in the `tlverse`"
 subtitle: "Causal Inference Meets Machine Learning"
 author: "Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana
   Malenica, Rachael Phillips"
-date: "updated: April 05, 2021"
+date: "updated: April 11, 2021"
 documentclass: book
 site: bookdown::bookdown_site
 bibliography: [book.bib, packages.bib]
@@ -22,7 +22,8 @@ graphics: yes
 description: "Open source, reproducible teaching materials accompanying a
   workshop on Targeted Learning with the [`tlverse` software
   ecosystem](https://github.com/tlverse), given at the [SER 2021
-  Meeting]() on Monday, 07 June 2021."
+  Meeting](https://epiresearch.org/annual-meeting/2021-meeting/workshop/) on
+  Monday, 07 June 2021."
 ---
 
 # Welcome! {-}
@@ -30,9 +31,9 @@ description: "Open source, reproducible teaching materials accompanying a
 This open source, reproducible vignette is for a half-day workshop on the
 Targeted Learning framework for statistical and causal inference with machine
 learning, given at the [SER 2021
-Meeting]() on Monday, 07 June 2021.
-Beyond introducing Targeted Learning, the workshop focuses on applying the
-methodology in practice using the [`tlverse` software
+Meeting](https://epiresearch.org/annual-meeting/2021-meeting/workshop/) on
+Monday, 07 June 2021.  Beyond introducing Targeted Learning, the workshop
+focuses on applying the methodology in practice using the [`tlverse` software
 ecosystem](https://github.com/tlverse).  These materials are based on a working
 draft of the book [*Targeted Learning in `R`: Causal Data Science with the
 `tlverse` Software Ecosystem*](https://tlverse.org/tlverse-handbook/), which
@@ -203,11 +204,11 @@ following packages:
 
 |package     |version    |source                                |
 |:-----------|:----------|:-------------------------------------|
-|bookdown    |0.21.9     |Github (rstudio/bookdown\@a5ac5f8)    |
-|bslib       |0.2.4.9002 |Github (rstudio/bslib\@1ac1d1c)       |
+|bookdown    |0.21.10    |Github (rstudio/bookdown\@6854e02)    |
+|bslib       |0.2.4.9002 |Github (rstudio/bslib\@85f3b92)       |
 |data.table  |1.14.0     |CRAN (R 4.0.5)                        |
 |delayed     |0.3.0      |CRAN (R 4.0.5)                        |
-|devtools    |2.3.2      |CRAN (R 4.0.5)                        |
+|devtools    |2.4.0      |CRAN (R 4.0.5)                        |
 |downlit     |0.2.1      |CRAN (R 4.0.5)                        |
 |dplyr       |1.0.5      |CRAN (R 4.0.5)                        |
 |ggplot2     |3.3.3      |CRAN (R 4.0.5)                        |
@@ -219,7 +220,7 @@ following packages:
 |readr       |1.4.0      |CRAN (R 4.0.5)                        |
 |rmarkdown   |2.7        |CRAN (R 4.0.5)                        |
 |skimr       |2.1.3      |CRAN (R 4.0.5)                        |
-|sl3         |1.4.3      |Github (tlverse/sl3\@ed37c33)         |
+|sl3         |1.4.3      |Github (tlverse/sl3\@5cddc6c)         |
 |stringr     |1.4.0      |CRAN (R 4.0.5)                        |
 |tibble      |3.1.0      |CRAN (R 4.0.5)                        |
 |tidyr       |1.1.3      |CRAN (R 4.0.5)                        |

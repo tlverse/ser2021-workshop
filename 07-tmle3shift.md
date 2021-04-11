@@ -5,7 +5,7 @@ _Nima Hejazi_
 Based on the [`tmle3shift` `R` package](https://github.com/tlverse/tmle3shift)
 by _Nima Hejazi, Jeremy Coyle, and Mark van der Laan_.
 
-Updated: 2021-04-05
+Updated: 2021-04-11
 
 ## Learning Objectives
 
@@ -327,15 +327,15 @@ sequel.
 ```r
 tmle_fit <- tmle3(tmle_spec, data, node_list, learner_list)
 #> 
-#> Iter: 1 fn: 1384.3571	 Pars:  0.23160444 0.00001921 0.76837635
-#> Iter: 2 fn: 1384.3571	 Pars:  0.23160449 0.00000771 0.76838780
+#> Iter: 1 fn: 1384.5336	 Pars:  0.22969279 0.00001885 0.77028836
+#> Iter: 2 fn: 1384.5336	 Pars:  0.229692876 0.000007582 0.770299542
 #> solnp--> Completed in 2 iterations
 tmle_fit
 #> A tmle3_Fit that took 1 step(s)
-#>    type         param init_est tmle_est       se   lower   upper
-#> 1:  TSM E[Y_{A=NULL}]   0.8008  0.79852 0.012841 0.77335 0.82368
-#>    psi_transformed lower_transformed upper_transformed
-#> 1:         0.79852           0.77335           0.82368
+#>    type         param init_est tmle_est      se   lower   upper psi_transformed
+#> 1:  TSM E[Y_{A=NULL}]   0.8008  0.79855 0.01284 0.77339 0.82372         0.79855
+#>    lower_transformed upper_transformed
+#> 1:           0.77339           0.82372
 ```
 
 The `print` method of the resultant `tmle_fit` object conveniently displays the
@@ -410,23 +410,23 @@ For convenience, we choose the latter:
 ```r
 tmle_fit <- tmle3(tmle_spec, data, node_list, learner_list)
 #> 
-#> Iter: 1 fn: 1385.6999	 Pars:  0.25334329 0.00004999 0.74660672
-#> Iter: 2 fn: 1385.6999	 Pars:  0.25334348 0.00003044 0.74662609
+#> Iter: 1 fn: 1385.8594	 Pars:  0.25208827 0.00004768 0.74786405
+#> Iter: 2 fn: 1385.8594	 Pars:  0.25208843 0.00002901 0.74788255
 #> solnp--> Completed in 2 iterations
 tmle_fit
 #> A tmle3_Fit that took 1 step(s)
 #>          type          param init_est tmle_est        se   lower   upper
-#> 1:        TSM  E[Y_{A=NULL}]  0.61655  0.61587 0.0139964 0.58844 0.64330
+#> 1:        TSM  E[Y_{A=NULL}]  0.61655  0.61546 0.0140007 0.58802 0.64290
 #> 2:        TSM  E[Y_{A=NULL}]  0.74115  0.73899 0.0138954 0.71176 0.76623
-#> 3:        TSM  E[Y_{A=NULL}]  0.84916  0.84362 0.0107141 0.82262 0.86462
-#> 4: MSM_linear MSM(intercept)  0.73562  0.73283 0.0120791 0.70915 0.75650
-#> 5: MSM_linear     MSM(slope)  0.11631  0.11388 0.0053718 0.10335 0.12440
+#> 3:        TSM  E[Y_{A=NULL}]  0.84917  0.84374 0.0107174 0.82274 0.86475
+#> 4: MSM_linear MSM(intercept)  0.73563  0.73273 0.0120788 0.70906 0.75641
+#> 5: MSM_linear     MSM(slope)  0.11631  0.11414 0.0053805 0.10360 0.12469
 #>    psi_transformed lower_transformed upper_transformed
-#> 1:         0.61587           0.58844           0.64330
+#> 1:         0.61546           0.58802           0.64290
 #> 2:         0.73899           0.71176           0.76623
-#> 3:         0.84362           0.82262           0.86462
-#> 4:         0.73283           0.70915           0.75650
-#> 5:         0.11388           0.10335           0.12440
+#> 3:         0.84374           0.82274           0.86475
+#> 4:         0.73273           0.70906           0.75641
+#> 5:         0.11414           0.10360           0.12469
 ```
 
 _Remark_: The `print` method of the resultant `tmle_fit` object conveniently
@@ -456,12 +456,12 @@ $\text{EIF}_{\beta}(O)$.
 
 ```r
 tmle_fit$summary[4:5, ]
-#>          type          param init_est tmle_est        se   lower  upper
-#> 1: MSM_linear MSM(intercept)  0.73562  0.73283 0.0120791 0.70915 0.7565
-#> 2: MSM_linear     MSM(slope)  0.11631  0.11388 0.0053718 0.10335 0.1244
+#>          type          param init_est tmle_est        se   lower   upper
+#> 1: MSM_linear MSM(intercept)  0.73563  0.73273 0.0120788 0.70906 0.75641
+#> 2: MSM_linear     MSM(slope)  0.11631  0.11414 0.0053805 0.10360 0.12469
 #>    psi_transformed lower_transformed upper_transformed
-#> 1:         0.73283           0.70915            0.7565
-#> 2:         0.11388           0.10335            0.1244
+#> 1:         0.73273           0.70906           0.75641
+#> 2:         0.11414           0.10360           0.12469
 ```
 
 ### Directly Targeting the MSM Parameter $\beta$
@@ -499,14 +499,14 @@ tmle_msm_spec <- tmle_vimshift_msm(
 # fit the TML estimator and examine the results
 tmle_msm_fit <- tmle3(tmle_msm_spec, data, node_list, learner_list)
 #> 
-#> Iter: 1 fn: 1383.9032	 Pars:  0.25182819 0.00001248 0.74815933
-#> Iter: 2 fn: 1383.9032	 Pars:  0.251828192 0.000007611 0.748164197
+#> Iter: 1 fn: 1383.8221	 Pars:  0.25259038 0.00001286 0.74739676
+#> Iter: 2 fn: 1383.8221	 Pars:  0.25259037 0.00000784 0.74740179
 #> solnp--> Completed in 2 iterations
 tmle_msm_fit
 #> A tmle3_Fit that took 100 step(s)
 #>          type          param init_est tmle_est        se   lower   upper
-#> 1: MSM_linear MSM(intercept)  0.73688  0.73682 0.0120246 0.71326 0.76039
-#> 2: MSM_linear     MSM(slope)  0.11604  0.11615 0.0053944 0.10558 0.12672
+#> 1: MSM_linear MSM(intercept)  0.73688  0.73682 0.0120245 0.71326 0.76039
+#> 2: MSM_linear     MSM(slope)  0.11604  0.11615 0.0053919 0.10558 0.12672
 #>    psi_transformed lower_transformed upper_transformed
 #> 1:         0.73682           0.71326           0.76039
 #> 2:         0.11615           0.10558           0.12672

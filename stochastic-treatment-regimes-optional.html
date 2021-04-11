@@ -11,11 +11,22 @@
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4.9002/tabs.js"></script><script src="libs/bs3compat-0.2.4.9002/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script><link href="libs/vis-4.20.1/vis.css" rel="stylesheet">
 <script src="libs/vis-4.20.1/vis.min.js"></script><script src="libs/visNetwork-binding-2.0.9/visNetwork.js"></script><script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
 </head>
-<body data-spy="scroll" data-target="#toc">
-
-<div class="container-fluid">
+<body>
+<span class="math inline">
+  \(\DeclareMathOperator{\expit}{expit}\)
+  \(\DeclareMathOperator{\logit}{logit}\)
+  \(\DeclareMathOperator*{\argmin}{\arg\!\min}\)
+  \(\newcommand{\indep}{\perp\!\!\!\perp}\)
+  \(\newcommand{\coloneqq}{\mathrel{=}}\)
+  \(\newcommand{\R}{\mathbb{R}}\)
+  \(\newcommand{\E}{\mathbb{E}}\)
+  \(\newcommand{\M}{\mathcal{M}}\)
+  \(\renewcommand{\P}{\mathbb{P}}\)
+  \(\newcommand{\I}{\mathbb{I}}\)
+  \(\newcommand{\1}{\mathbbm{1}}\)
+  </span>
+    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS --><div class="container-fluid">
 <div class="row">
   <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
@@ -58,7 +69,7 @@
 <p><em>Nima Hejazi</em></p>
 <p>Based on the <a href="https://github.com/tlverse/tmle3shift"><code>tmle3shift</code> <code>R</code> package</a>
 by <em>Nima Hejazi, Jeremy Coyle, and Mark van der Laan</em>.</p>
-<p>Updated: 2021-04-05</p>
+<p>Updated: 2021-04-11</p>
 <div id="learning-objectives-4" class="section level2">
 <h2>
 <span class="header-section-number">6.1</span> Learning Objectives<a class="anchor" aria-label="anchor" href="#learning-objectives-4"><i class="fas fa-link"></i></a>
@@ -377,15 +388,15 @@ sequel.
 <div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tmle_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://tlverse.org/tmle3/reference/tmle3.html">tmle3</a></span><span class="op">(</span><span class="va">tmle_spec</span>, <span class="va">data</span>, <span class="va">node_list</span>, <span class="va">learner_list</span><span class="op">)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Iter: 1 fn: 1384.3571     Pars:  0.23160444 0.00001921 0.76837635</span>
-<span class="co">#&gt; Iter: 2 fn: 1384.3571     Pars:  0.23160449 0.00000771 0.76838780</span>
+<span class="co">#&gt; Iter: 1 fn: 1384.5336     Pars:  0.22969279 0.00001885 0.77028836</span>
+<span class="co">#&gt; Iter: 2 fn: 1384.5336     Pars:  0.229692876 0.000007582 0.770299542</span>
 <span class="co">#&gt; solnp--&gt; Completed in 2 iterations</span>
 <span class="va">tmle_fit</span>
 <span class="co">#&gt; A tmle3_Fit that took 1 step(s)</span>
-<span class="co">#&gt;    type         param init_est tmle_est       se   lower   upper</span>
-<span class="co">#&gt; 1:  TSM E[Y_{A=NULL}]   0.8008  0.79852 0.012841 0.77335 0.82368</span>
-<span class="co">#&gt;    psi_transformed lower_transformed upper_transformed</span>
-<span class="co">#&gt; 1:         0.79852           0.77335           0.82368</span></code></pre></div>
+<span class="co">#&gt;    type         param init_est tmle_est      se   lower   upper psi_transformed</span>
+<span class="co">#&gt; 1:  TSM E[Y_{A=NULL}]   0.8008  0.79855 0.01284 0.77339 0.82372         0.79855</span>
+<span class="co">#&gt;    lower_transformed upper_transformed</span>
+<span class="co">#&gt; 1:           0.77339           0.82372</span></code></pre></div>
 <p>The <code>print</code> method of the resultant <code>tmle_fit</code> object conveniently displays the
 results from computing our TML estimator.</p>
 </div>
@@ -459,23 +470,23 @@ For convenience, we choose the latter:</p>
 <div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tmle_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://tlverse.org/tmle3/reference/tmle3.html">tmle3</a></span><span class="op">(</span><span class="va">tmle_spec</span>, <span class="va">data</span>, <span class="va">node_list</span>, <span class="va">learner_list</span><span class="op">)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Iter: 1 fn: 1385.6999     Pars:  0.25334329 0.00004999 0.74660672</span>
-<span class="co">#&gt; Iter: 2 fn: 1385.6999     Pars:  0.25334348 0.00003044 0.74662609</span>
+<span class="co">#&gt; Iter: 1 fn: 1385.8594     Pars:  0.25208827 0.00004768 0.74786405</span>
+<span class="co">#&gt; Iter: 2 fn: 1385.8594     Pars:  0.25208843 0.00002901 0.74788255</span>
 <span class="co">#&gt; solnp--&gt; Completed in 2 iterations</span>
 <span class="va">tmle_fit</span>
 <span class="co">#&gt; A tmle3_Fit that took 1 step(s)</span>
 <span class="co">#&gt;          type          param init_est tmle_est        se   lower   upper</span>
-<span class="co">#&gt; 1:        TSM  E[Y_{A=NULL}]  0.61655  0.61587 0.0139964 0.58844 0.64330</span>
+<span class="co">#&gt; 1:        TSM  E[Y_{A=NULL}]  0.61655  0.61546 0.0140007 0.58802 0.64290</span>
 <span class="co">#&gt; 2:        TSM  E[Y_{A=NULL}]  0.74115  0.73899 0.0138954 0.71176 0.76623</span>
-<span class="co">#&gt; 3:        TSM  E[Y_{A=NULL}]  0.84916  0.84362 0.0107141 0.82262 0.86462</span>
-<span class="co">#&gt; 4: MSM_linear MSM(intercept)  0.73562  0.73283 0.0120791 0.70915 0.75650</span>
-<span class="co">#&gt; 5: MSM_linear     MSM(slope)  0.11631  0.11388 0.0053718 0.10335 0.12440</span>
+<span class="co">#&gt; 3:        TSM  E[Y_{A=NULL}]  0.84917  0.84374 0.0107174 0.82274 0.86475</span>
+<span class="co">#&gt; 4: MSM_linear MSM(intercept)  0.73563  0.73273 0.0120788 0.70906 0.75641</span>
+<span class="co">#&gt; 5: MSM_linear     MSM(slope)  0.11631  0.11414 0.0053805 0.10360 0.12469</span>
 <span class="co">#&gt;    psi_transformed lower_transformed upper_transformed</span>
-<span class="co">#&gt; 1:         0.61587           0.58844           0.64330</span>
+<span class="co">#&gt; 1:         0.61546           0.58802           0.64290</span>
 <span class="co">#&gt; 2:         0.73899           0.71176           0.76623</span>
-<span class="co">#&gt; 3:         0.84362           0.82262           0.86462</span>
-<span class="co">#&gt; 4:         0.73283           0.70915           0.75650</span>
-<span class="co">#&gt; 5:         0.11388           0.10335           0.12440</span></code></pre></div>
+<span class="co">#&gt; 3:         0.84374           0.82274           0.86475</span>
+<span class="co">#&gt; 4:         0.73273           0.70906           0.75641</span>
+<span class="co">#&gt; 5:         0.11414           0.10360           0.12469</span></code></pre></div>
 <p><em>Remark</em>: The <code>print</code> method of the resultant <code>tmle_fit</code> object conveniently
 displays the results from computing our TML estimator.</p>
 </div>
@@ -503,12 +514,12 @@ for <span class="math inline">\(m_{\beta}(\delta)\)</span> may be expressed <spa
 <span class="math inline">\(\text{EIF}_{\beta}(O)\)</span>.</p>
 <div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">tmle_fit</span><span class="op">$</span><span class="va">summary</span><span class="op">[</span><span class="fl">4</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span>
-<span class="co">#&gt;          type          param init_est tmle_est        se   lower  upper</span>
-<span class="co">#&gt; 1: MSM_linear MSM(intercept)  0.73562  0.73283 0.0120791 0.70915 0.7565</span>
-<span class="co">#&gt; 2: MSM_linear     MSM(slope)  0.11631  0.11388 0.0053718 0.10335 0.1244</span>
+<span class="co">#&gt;          type          param init_est tmle_est        se   lower   upper</span>
+<span class="co">#&gt; 1: MSM_linear MSM(intercept)  0.73563  0.73273 0.0120788 0.70906 0.75641</span>
+<span class="co">#&gt; 2: MSM_linear     MSM(slope)  0.11631  0.11414 0.0053805 0.10360 0.12469</span>
 <span class="co">#&gt;    psi_transformed lower_transformed upper_transformed</span>
-<span class="co">#&gt; 1:         0.73283           0.70915            0.7565</span>
-<span class="co">#&gt; 2:         0.11388           0.10335            0.1244</span></code></pre></div>
+<span class="co">#&gt; 1:         0.73273           0.70906           0.75641</span>
+<span class="co">#&gt; 2:         0.11414           0.10360           0.12469</span></code></pre></div>
 </div>
 <div id="directly-targeting-the-msm-parameter-beta" class="section level3">
 <h3>
@@ -542,14 +553,14 @@ appears above):</p>
 <span class="co"># fit the TML estimator and examine the results</span>
 <span class="va">tmle_msm_fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://tlverse.org/tmle3/reference/tmle3.html">tmle3</a></span><span class="op">(</span><span class="va">tmle_msm_spec</span>, <span class="va">data</span>, <span class="va">node_list</span>, <span class="va">learner_list</span><span class="op">)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt; Iter: 1 fn: 1383.9032     Pars:  0.25182819 0.00001248 0.74815933</span>
-<span class="co">#&gt; Iter: 2 fn: 1383.9032     Pars:  0.251828192 0.000007611 0.748164197</span>
+<span class="co">#&gt; Iter: 1 fn: 1383.8221     Pars:  0.25259038 0.00001286 0.74739676</span>
+<span class="co">#&gt; Iter: 2 fn: 1383.8221     Pars:  0.25259037 0.00000784 0.74740179</span>
 <span class="co">#&gt; solnp--&gt; Completed in 2 iterations</span>
 <span class="va">tmle_msm_fit</span>
 <span class="co">#&gt; A tmle3_Fit that took 100 step(s)</span>
 <span class="co">#&gt;          type          param init_est tmle_est        se   lower   upper</span>
-<span class="co">#&gt; 1: MSM_linear MSM(intercept)  0.73688  0.73682 0.0120246 0.71326 0.76039</span>
-<span class="co">#&gt; 2: MSM_linear     MSM(slope)  0.11604  0.11615 0.0053944 0.10558 0.12672</span>
+<span class="co">#&gt; 1: MSM_linear MSM(intercept)  0.73688  0.73682 0.0120245 0.71326 0.76039</span>
+<span class="co">#&gt; 2: MSM_linear     MSM(slope)  0.11604  0.11615 0.0053919 0.10558 0.12672</span>
 <span class="co">#&gt;    psi_transformed lower_transformed upper_transformed</span>
 <span class="co">#&gt; 1:         0.73682           0.71326           0.76039</span>
 <span class="co">#&gt; 2:         0.11615           0.10558           0.12672</span></code></pre></div>
@@ -764,7 +775,7 @@ interpret our findings?</p></li>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>[SER 2021 Workshop] Targeted Learning in the <code>tlverse</code></strong>: Causal Inference Meets Machine Learning" was written by Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips. It was last built on updated: April 05, 2021.</p>
+    <p>"<strong>[SER 2021 Workshop] Targeted Learning in the <code>tlverse</code></strong>: Causal Inference Meets Machine Learning" was written by Mark van der Laan, Alan Hubbard, Jeremy Coyle, Nima Hejazi, Ivana Malenica, Rachael Phillips. It was last built on updated: April 11, 2021.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
