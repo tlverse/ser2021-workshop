@@ -2,17 +2,21 @@ bookdown::bs4_book:
   theme:
     primary: "#0098db"
   repo: https://github.com/tlverse/ser2021-workshop
+  includes:
+    in_header: html_extras/mathjax_header.html
 
 bookdown::gitbook:
   css: [css/style.css, css/toc.css, css/center.css]
   dev: svg
+  includes:
+    in_header: html_extras/mathjax_header.html
   config:
     toc:
       collapse: section
       before: |
         <li><strong><a href="./">Targeted Learning in R with the tlverse</a></strong></li>
     edit:
-      link: https://github.com/tlverse/ser2021-handbook/edit/master/%s
+      link: https://github.com/tlverse/ser2021-workshop/edit/master/%s
       text: "Edit"
     sharing: no
 

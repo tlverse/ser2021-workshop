@@ -22,7 +22,8 @@ graphics: yes
 description: "Open source, reproducible teaching materials accompanying a
   workshop on Targeted Learning with the [`tlverse` software
   ecosystem](https://github.com/tlverse), given at the [SER 2021
-  Meeting]() on Monday, 07 June 2021."
+  Meeting](https://epiresearch.org/annual-meeting/2021-meeting/workshop/) on
+  Monday, 07 June 2021."
 ---
 
 # Welcome! {-}
@@ -30,9 +31,9 @@ description: "Open source, reproducible teaching materials accompanying a
 This open source, reproducible vignette is for a half-day workshop on the
 Targeted Learning framework for statistical and causal inference with machine
 learning, given at the [SER 2021
-Meeting]() on Monday, 07 June 2021.
-Beyond introducing Targeted Learning, the workshop focuses on applying the
-methodology in practice using the [`tlverse` software
+Meeting](https://epiresearch.org/annual-meeting/2021-meeting/workshop/) on
+Monday, 07 June 2021.  Beyond introducing Targeted Learning, the workshop
+focuses on applying the methodology in practice using the [`tlverse` software
 ecosystem](https://github.com/tlverse).  These materials are based on a working
 draft of the book [*Targeted Learning in `R`: Causal Data Science with the
 `tlverse` Software Ecosystem*](https://tlverse.org/tlverse-handbook/), which
