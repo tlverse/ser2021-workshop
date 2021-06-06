@@ -256,7 +256,7 @@ head(sl_preds)
 
 
 ## ---- sl-summary--------------------------------------------------------------
-sl_fit_summary <- sl_fit$print()
+sl_fit$cv_risk(loss_fun = loss_squared_error)
 
 
 ## ----CVsl---------------------------------------------------------------------
