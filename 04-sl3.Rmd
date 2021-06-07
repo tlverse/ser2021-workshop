@@ -24,27 +24,6 @@ By the end of this chapter you will be able to:
 6. Obtain `sl3` variable importance metrics.
 7. Interpret the discrete and continuous Super Learner fits.
 
-## Motivation {-}
-
-- A common task in data analysis is prediction --- using the observed data to
-  learn a function, which can be used to map new input variables into a
-  predicted outcome.
-  <!--
-  Oftentimes, the scientific question of interest translates to a statistical
-  question that requires (causal) effect estimation. Even in these scenarios,
-  where prediction is not in the forefront, there are Often prediction steps
-  embedded in the procedure.
-  --->
-- For some data, algorithms that can model a complex function are necessary to
-  adequately model the data. For other data, a main terms regression model might
-  fit the data quite well.
-- The Super Learner (SL), an ensemble learner, solves this issue, by allowing a
-  combination of algorithms from the simplest (intercept-only) to most complex
-  (neural nets, random forests, SVM, etc).
-- It works by using cross-validation in a manner that provides asymptotic 
-  guarantees that the resulting fit will be as good as possible, given the 
-  learners provided.
-
 ## Introduction {-}
 
 In [Chapter 1](#intro), we introduced the [_Roadmap for Targeted
@@ -90,6 +69,27 @@ been shown to be adaptive and robust, even in small samples [@polley2010super].
 The SL is proven to perform asymptotically as well as the best possible 
 prediction algorithm in the library [@vdl2003unified; @vaart2006oracle].
 
+## Motivation {-}
+
+- A common task in data analysis is prediction --- using the observed data to
+  learn a function, which can be used to map new input variables into a
+  predicted outcome.
+  <!--
+  Oftentimes, the scientific question of interest translates to a statistical
+  question that requires (causal) effect estimation. Even in these scenarios,
+  where prediction is not in the forefront, there are Often prediction steps
+  embedded in the procedure.
+  --->
+- For some data, algorithms that can model a complex function are necessary to
+  adequately model the data. For other data, a main terms regression model might
+  fit the data quite well.
+- The Super Learner (SL), an ensemble learner, solves this issue, by allowing a
+  combination of algorithms from the simplest (intercept-only) to most complex
+  (neural nets, random forests, SVM, etc).
+- It works by using cross-validation in a manner that provides asymptotic 
+  guarantees that the resulting fit will be as good as possible, given the 
+  learners provided.
+  
 ### Why use the Super Learner? {-}
 
 - For prediction, one can use the cross-validated risk to empirically determine
@@ -112,9 +112,9 @@ knitr::include_graphics("img/misc/ericSL.pdf")
 - Motivates the name "Super Learner": it provides a system of combining many 
   estimators into an improved estimator.
   
-### General Overview of the Algorithm {-}
+## General Overview of the Algorithm {-}
 
-#### What is cross-validation and how does it work?
+### What is cross-validation and how does it work?
 
 - There are many different cross-validation schemes, which are designed to
   accommodate different study designs, data structures, and prediction
@@ -126,7 +126,7 @@ knitr::include_graphics("img/misc/ericSL.pdf")
 knitr::include_graphics("img/misc/vs.pdf")
 ```
 
-#### General step-by-step overview of the Super Learner algorithm
+### General step-by-step overview of the Super Learner algorithm
 
 - Break up the sample evenly into V-folds (say V=10).
 - For each of these 10 folds, remove that portion of the sample (kept out as
